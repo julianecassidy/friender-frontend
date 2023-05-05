@@ -48,7 +48,7 @@ App (makes API calls, handles auth, and sets currentUser in context)
         - renders: none
 
         Profile (UI component that creates the profile page)
-        - props: userData, userImages, editUser, addPhoto, removePhoto
+        - props: userImages, editUser, addPhoto, removePhoto
         - functions: none
         - state: none
         - links to: /:user
@@ -68,7 +68,7 @@ App (makes API calls, handles auth, and sets currentUser in context)
             - links to: none
             - renders: AddPhoto
 
-                AddPhoto (form to add new photo)
+                PhotoForm (form to add new photo)
                 - props: addPhoto
                 - functions: handleSubmit
                 - state: imageUrl

@@ -16,15 +16,24 @@ function PhotoForm({ savePhoto }) {
     const [file, setFile] = useState("");
     console.debug("PhotoForm, state: ", file)
 
+    /** Update form input. */
+    function handleChange(evt) {
+        const file = evt.target.files[0]
+        setFile(file);
+    }
+
+    /** Handle form on submit to save file. */
     async function handleSubmit(evt) {
         evt.preventDefault();
         console.debug("handleSubmit on form");
 
-        try {
-            await savePhoto(file);
-            setFile("")
-        } catch (err) {
-            throw err;
+        if (file !== null) {
+            try {
+                await savePhoto(file);
+                setFile("")
+            } catch (err) {
+                throw err;
+            }
         }
     }
 
@@ -32,7 +41,12 @@ function PhotoForm({ savePhoto }) {
         <div className="PhotoForm">
             <form onSubmit={handleSubmit}>
                 <label>Add a Photo</label>
-                <input name="image-file" id="image-file" type="file" />
+                <input 
+                  name="image-file" 
+                  id="image-file" 
+                  type="file"
+                  onChange={handleChange}
+                />
                 <button type="submit" value="Upload">Submit</button>
             </form>
         </div>
